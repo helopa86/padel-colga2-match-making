@@ -25,6 +25,7 @@ Empareja mínimo 5 jugadores y máximo 6. La lista de nombres admitidos por el p
 - Huertas
 - Jorge
 - Lax
+![image](https://user-images.githubusercontent.com/28756802/110225612-893db580-7ee7-11eb-9bf3-32dc1d5ee2ef.png)
 
 ### Funcionamiento
 Los criterios de emparejamiento seguidos son:
