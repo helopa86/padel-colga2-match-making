@@ -1,11 +1,11 @@
-#Algoritmo de emparejamientos para el padel 
+# Algoritmo de emparejamientos para el padel 
 
-##Requisitos
+## Requisitos
 
 - Tener instalado [Maven 3.xx]  
 - Tener instalado [Java 8]
 
-##Construcción 
+## Construcción 
 
 Para construir el proyecto solo tenemos que lanzar el siguiente comando maven sobre el proyecto:
 
@@ -13,7 +13,7 @@ Para construir el proyecto solo tenemos que lanzar el siguiente comando maven so
 
 esto nos genera el fichero **java -jar padel-1.0-0-SNAPSHOT.jar** en la carpeta target/
 
-##Ejecución
+## Ejecución
 Para ejecutar el programa ponemos el siguiente comando:
 
 ```java -jar padel-1.0-0-SNAPSHOT.jar Nombre1 Nombre2 Nombre3 Nombre4 Nombre5 Nombre6```
