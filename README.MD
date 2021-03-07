@@ -2,8 +2,8 @@
 
 ## Requisitos
 
-- Tener instalado [Maven 3.xx]  
 - Tener instalado [Java 8]
+- Tener instalado [Maven 3.xx]  
 
 ## Construcción 
 
@@ -11,7 +11,7 @@ Para construir el proyecto solo tenemos que lanzar el siguiente comando maven so
 
 ```mvn clean install```
 
-esto nos genera el fichero **java -jar padel-1.0-0-SNAPSHOT.jar** en la carpeta target/
+esto nos genera el fichero **padel-1.0-0-SNAPSHOT.jar** en la carpeta target/
 
 ## Ejecución
 Para ejecutar el programa ponemos el siguiente comando:
