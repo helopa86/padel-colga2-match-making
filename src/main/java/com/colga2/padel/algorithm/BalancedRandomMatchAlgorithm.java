@@ -8,15 +8,18 @@ import java.util.stream.Collectors;
 
 import com.colga2.padel.exception.PadelMatchingException;
 import com.colga2.padel.model.Match;
+import com.colga2.padel.model.Pair;
 import com.colga2.padel.model.Player;
 import com.colga2.padel.util.PadelUtils;
 
 public class BalancedRandomMatchAlgorithm implements RandomMatchAlgorithm {
 
     private List<Player> players; //Jugadores cargados desde los argumentos de entrada al programa.
+    private List<Pair> pairs; //Parejas cargadas con la combinación de jugadores
 
-    public BalancedRandomMatchAlgorithm(List<Player> players) {
+    public BalancedRandomMatchAlgorithm(List<Player> players, List<Pair> pairs) {
         this.players = players;
+        this.pairs = pairs;
     }
 
     /**
@@ -43,6 +46,9 @@ public class BalancedRandomMatchAlgorithm implements RandomMatchAlgorithm {
             players.stream().filter(player ->
                     !PadelUtils.isPlayerInMatch(player, lastPlayedMatch))
                     .forEach(Player::rest);                         //Los jugadores que NO han jugado el último partido descansan
+            pairs.stream().filter(pair ->
+                    !PadelUtils.isPairInMatch(pair,lastPlayedMatch))
+                    .forEach(Pair::rest);                           //Las parejas que no han jugado el partido descansan
         }
         return reorderedMatches;  //Devuelve la lista resultante de los partidos ordenados
     }
@@ -72,7 +78,10 @@ public class BalancedRandomMatchAlgorithm implements RandomMatchAlgorithm {
             return matches.stream().min(Comparator.comparingInt(Match::getTotalTimesPlayedInaRow)). //Se escoge que jueguen aquellos jugadores que llevan menos partidos seguidos jugados...
                     orElseThrow(() -> new PadelMatchingException("No se obtuvo ningún candidato"));
         }
-        return candidateMatchList.get(0);                                                           //Escogemos el primer partido candidato de lo filtrado por lo anterior
+        return candidateMatchList.stream()
+                .filter(match -> !match.getLocalPair().getLastPlayed() && !match.getVisitorPair().getLastPlayed())
+                .findFirst()                                                                        //Intentamos que no juegue la misma pareja que jugó en el anterior partido
+                .orElse(candidateMatchList.get(0));                                                 //Si no hay mas remedio elegimos el primer partido
     }
 
 

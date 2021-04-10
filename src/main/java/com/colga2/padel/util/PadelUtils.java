@@ -48,4 +48,10 @@ public class PadelUtils {
                 candidateMatch.getVisitorPair().getPlayerA().equals(player) ||
                 candidateMatch.getVisitorPair().getPlayerB().equals(player);
     }
+
+    public static boolean isPairInMatch(Pair pair, Match candidateMatch){
+        return pair.equals(candidateMatch.getLocalPair()) ||
+                pair.equals(candidateMatch.getVisitorPair());
+    }
+
 }

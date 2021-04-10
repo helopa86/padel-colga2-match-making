@@ -22,12 +22,13 @@ public class Main {
     private static InputValidatorService inputValidatorService = new NamesInputValidatorService();   //servicio de validación de los nombres
 
     public static void main(String[] args) {
+        System.out.println();
         List<String> names = inputValidatorService.checkNames(args);                            //Obtiene los nombres como entradas al programa
         List<Player> players = names.stream().map(Player::new).collect(Collectors.toList());    //Construye los jugadores a través de la lista de nombres
         List<Pair> pairs = pairMakingService.getPairings(players);                              //Se emparejan los jugadores con todas las posibles parejas
         List<Match> matches = matchMakingService.getPairings(pairs);                            //Se alinean las parejas en todos los posibles partidos
 
-        List<Match> reorderedMatches = new BalancedRandomMatchAlgorithm(players)                //Se reordenan todos los posibles partidos de tal forma que cumpla con los criterios...
+        List<Match> reorderedMatches = new BalancedRandomMatchAlgorithm(players,pairs)                //Se reordenan todos los posibles partidos de tal forma que cumpla con los criterios...
                 .shuffle(getFirstMatch(args,matches), matches);                                 //de entrada de jugadores que no han jugado y salida de jugadores que mas han jugado
         System.out.println("Nº partidos: "+reorderedMatches.size());                            //Muestra por consola el número de partidos totales
         System.out.println(reorderedMatches);                                                   //Muestra por consola los partidos reordenados cumpliendo los criterios

@@ -10,13 +10,16 @@ public class Pair {
     private Player playerB; // Jugador B
     private Integer localCount; //Veces que la pareja ha jugado como local
     private Integer visitorCount; //Veces que la pareja ha jugado como visitante
+    private Boolean lastPlayed;
 
     public Pair(Player playerA, Player playerB) {
         this.id = playerA.getName()+Constants.NAME_SEPARATOR+playerB.getName();
         this.playerA = playerA;
         this.playerB = playerB;
-        localCount = 0;
-        visitorCount = 0;
+        this.localCount = 0;
+        this.visitorCount = 0;
+        this.lastPlayed = false;
+
     }
 
     public String getId() {
@@ -39,6 +42,14 @@ public class Pair {
         return visitorCount;
     }
 
+    public Boolean getLastPlayed() {
+        return lastPlayed;
+    }
+
+    public void rest(){
+        this.lastPlayed = false;
+    }
+
     public void play(boolean asLocal){
         if(asLocal){ //juega como local
             localCount++;    //se incrementa el contador de juego local
@@ -47,6 +58,7 @@ public class Pair {
         }
         playerA.play();    //Juega el jugador A
         playerB.play();    //Juega el jugador B
+        lastPlayed=true;
     }
 
     @Override
