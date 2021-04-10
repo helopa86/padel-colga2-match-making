@@ -33,6 +33,7 @@ Los criterios de emparejamiento seguidos son:
 - Se reordenan de forma aleatoria y se van asignando partidos con la siguiente prioridad:
 - Se examina que para el partido SIEMPRE entren los que en el anterior partido han DESCANSADO.
 - Los jugadores que salgan serán aquellos que lleven más tiempo jugando
+- Se intenta que la pareja que juegue no sea la misma que en el anterior partido
 - Se asignará pareja local o pareja visitante de acuerdo a las veces que esa pareja haya sido local o visitante.
 - La pareja local tiene la ventaja de sacar primero.
  
